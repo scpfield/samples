@@ -5,25 +5,19 @@ The following is my implementation of the core part of a base64
 encoder, which is used in MIME email formats for binary attachments,
 and used in other protocols.
 
-The reason it is called base64 encoding is because the number
-64 is the highest you get with 6 bits, and so you convert all the
-8-bit data into 6-bit data, and use the resulting values as an index
-lookup to a table of alphabetic, printable ASCII characters
-("A", "B", "C", etc), for which there are 64 entries.
-
-This is performed for things like file attachments to emails
-so they will transmit successfully through SMTP servers because
-those servers + transports don't work very well with 8-bit data.
-
 The base64 specification calls for taking 3 bytes of 8-bit data, and
-converting it into 4 bytes of "6-bit" data.
+converting it into 4 bytes of 6-bit data, and using each 6-bit value
+as an index into an array of printable characters.  The reason it is 
+called base64 encoding is because the number 64 is the largest number 
+that 6 bits will give you.
 
-Of course this means your files expand in size when they are
-base64 encoded -- each encoded byte has 2 bits of unused "dead space"
+Of course, using this method of encoding on a file means your files 
+expand in size since each encoded byte has 2 bits of unused "dead space"
 because the minimum data length of a CPU is 8 bits.
 
-In my implmentation, the main loop simply walks an input array of
-8-bit data, in batches of 3 and making 4, which is how the spec is defined.
+In my implementation below, the main loop simply walks an input array of
+8-bit data, taking batches of 3 bytes as input and making 4 bytes output, 
+which is how the spec is defined.
 
 Normally you're supposed to handle cases at the end, for when your input
 data isn't divisible evenly by 3 bytes and you have leftovers, so in that case
@@ -38,7 +32,6 @@ At the end of this C file there is sample output.
 */
 
 /* function declaration to console print a byte array in "1" and "0" format */
-
 void print_bits(const unsigned char* bytes, int len);
 
 int main()

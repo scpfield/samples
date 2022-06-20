@@ -1,9 +1,9 @@
 /*
 
-This is my implementation of a programming question I got during
-an interview.  I did not provide a complete solution during the 
-interview itself, because I got a little bit of brain-freeze, but it only 
-took me a few minutes afterwards to finish it.
+This is my implementation of a programming question I once got during
+an interview.  I stumbled a little bit during the interview, because I 
+got nervous and had brain-freeze, but I afterwards I made a better
+implmentation.
 
 The question was, given a series of numbers increasing by 1,
 but has gaps, detect and print the ranges of continuously-increasing

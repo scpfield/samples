@@ -3,7 +3,7 @@
 This is my implementation of a programming question I once got during
 an interview.  I stumbled a little bit during the interview, because I 
 got nervous and had brain-freeze, but I afterwards I made a better
-implmentation.
+implementation.
 
 The question was, given a series of numbers increasing by 1,
 but has gaps, detect and print the ranges of continuously-increasing
